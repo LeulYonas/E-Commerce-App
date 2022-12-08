@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+// import'./App.css';
+// import Navbar from './components/Navbar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Do Projects
-        </a>
-      </header>
-    </div>
-  );
+
+// export default function App() {
+//   return (
+//     <>
+//       <Navbar />
+//     </>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ItemList from "./components/ItemList";
+import './App.css';
+import Navbar from './components/Navbar';
+
+const App = () => {
+  const [items, setItems] = useState([]);
+
+  async function goGetTheData() {
+    
+    const resp = await fetch('https://fakestoreapi.com/products');  
+    const items = await resp.json();
+    console.log(items);
+    setItems(items)
 }
+
+useEffect(() => {
+  goGetTheData();
+}, []);
+
+  return (     
+    <>
+     <Navbar />
+      <div className='container-fluid'>      
+        <div className="row">
+          <ItemList items={items}/>  
+        </div>
+    </div>
+    </>
+  
+  )
+};
 
 export default App;
