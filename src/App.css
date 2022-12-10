@@ -3,3 +3,13 @@
   font-size: 18px;  
 }
 
+.card-body{
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid #f8f8f8;
+  width: 25%;
+
+  padding: 5px;
+}

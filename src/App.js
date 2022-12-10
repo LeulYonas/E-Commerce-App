@@ -25,6 +25,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ItemList from "./components/ItemList";
 import './App.css';
 import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -45,7 +46,7 @@ useEffect(() => {
     <>
      <Navbar />
       <div className='container-fluid'>      
-        <div className="row">
+        <div className="row product-card">
           <ItemList items={items}/>  
         </div>
     </div>
