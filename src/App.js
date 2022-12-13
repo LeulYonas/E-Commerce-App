@@ -1,57 +1,24 @@
-// import'./App.css';
-// import Navbar from './components/Navbar';
-
-
-// export default function App() {
-//   return (
-//     <>
-//       <Navbar />
-//     </>
-//   )
-// }
-
-
-
-
-
-
-
-
-
-
-
-import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ItemList from "./components/ItemList";
 import './App.css';
+import Home from "./components/Home";
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
+import Products from "./components/Products";
+import Product from "./components/Product";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const App = () => {
-  const [items, setItems] = useState([]);
-
-  async function goGetTheData() {
-    
-    const resp = await fetch('https://fakestoreapi.com/products');  
-    const items = await resp.json();
-    console.log(items);
-    setItems(items)
-}
-
-useEffect(() => {
-  goGetTheData();
-}, []);
-
-  return (     
-    <>
-     <Navbar />
-      <div className='container-fluid'>      
-        <div className="row product-card">
-          <ItemList items={items}/>  
-        </div>
-    </div>
-    </>
+function App () {
   
+  return (     
+    <>    
+      <Navbar />        
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/products" component={Products} />
+        <Route exact path="/products/:id" component={Product} />
+        
+                        
+      </Switch>    
+    </>  
   )
 };
 
