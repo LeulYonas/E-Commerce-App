@@ -1,5 +1,7 @@
 import React from 'react';
-import './ItemList.css'
+import './ItemList.css';
+import '../api-fetch';
+
 
 const ItemList = (props) => {
     return (
